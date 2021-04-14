@@ -1,29 +1,31 @@
 // TODO
 
 Vue.component('car-view', {
-    props: ['cars'],
     data: function () {
-        this.cars = [
-            {
-                model: 'Auris',
-                engine: '1.4',
-                extras: ['sk贸rzana tapicerka', 'zajebiste alusy'],
-            },
-            {
-                model: 'Land Cruiser',
-                engine: '3.2',
-                extras: ['sk贸rzana tapicerka', 'zajebiste alusy'],
-            }
-        ]
-        return this.cars;
-    },
+        let data = [];
+        axios.get('https://my.api.mockaroo.com/car_selector_2_image.json?key=e574cd50&fbclid=IwAR31ESIbtVWAeWq_4ptz5VXh4BosKVyj9wFqObqgdMszzPfx_1VX4jYYGoY')
+                .then(result => {
+                    this.data = [result.data.model, result.data.image]
+                })
+        return {
+          data
+        }
+      },
+      methods:{
+        getImgUrl(id) {
+            return this.data[1][0].url;
+          }
+      },
     template: `
     <div>
-        <p>Widok samochod贸w: </p>
-        <div v-for="car in cars"> 
-            Model: {{car.model}} 
-            <br> Silnik: {{car.engine}} 
-            <br> Opcje: {{car.extras}} 
+        <p>Widok samochod體: </p>
+        <div v-for="car in data[0]"> 
+            Model: {{car.name}} 
+            <br> id: {{car.id}} <br>
+        </div>
+        <div v-for="img in data[1]">
+            Auto: {{img.model_name}}
+            <img :src="getImgUrl(img)">
         </div>
     </div>
     `
@@ -31,24 +33,6 @@ Vue.component('car-view', {
 var app;
 window.onload = function () {
     app = new Vue({
-        el: '#app',
-        data: {
-            cars: [
-                {
-                    model: 'Auris',
-                    engine: '1.4',
-                    extras: ['sk贸rzana tapicerka', 'zajebiste alusy'],
-                },
-                {
-                    model: 'Land Cruiser',
-                    engine: '3.2',
-                    extras: ['sk贸rzana tapicerka', 'zajebiste alusy'],
-                }
-            ]
-        },
-        mounted: function () {
-            // axios.get('http://mockaroo/API_OD_MICHALA')
-            //     .then(result => this.cars = result)
-        },
+        el: '#app'
     });
 }
