@@ -1,0 +1,52 @@
+[
+	{
+		"id": 1,
+		"model": "BMW serii 2 Coupé",
+		"combustion": 12.26
+	},
+	{
+		"id": 2,
+		"model": "BMW serii 2 Gran Coupé",
+		"combustion": 7.12
+	},
+	{
+		"id": 3,
+		"model": "BMW serii 2 Cabrio",
+		"combustion": 7.1
+	},
+	{
+		"id": 4,
+		"model": "BMW serii 2 Active Tourer",
+		"combustion": 6.15
+	},
+	{
+		"id": 5,
+		"model": "BMW serii 2 Gran Tourer",
+		"combustion": 14.7
+	},
+	{
+		"id": 6,
+		"model": "BMW serii 3 Limuzyna",
+		"combustion": 7.98
+	},
+	{
+		"id": 7,
+		"model": "BMW serii 3 Touring",
+		"combustion": 14.1
+	},
+	{
+		"id": 8,
+		"model": "BMW serii 5 Touring",
+		"combustion": 12.99
+	},
+	{
+		"id": 9,
+		"model": "BMW serii 7 Limuzyna",
+		"combustion": 7.96
+	},
+	{
+		"id": 10,
+		"model": "BMW serii 8 Coupé",
+		"combustion": 11.74
+	}
+]

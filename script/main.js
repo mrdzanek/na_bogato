@@ -245,14 +245,11 @@ var soldView = Vue.component('sold-view', {
 
             }
             for (let car in this.data.data) {
-                console.log(this.data.data[car].number_sold)
                 preparedData.labels.push(this.data.data[car].model_sold);
                 preparedData.datasets[0].data.push(this.data.data[car].number_sold);
                 preparedData.datasets[0].backgroundColor.push(randomizeColor());
                 preparedData.datasets[0].borderColor.push(randomizeColor());
             }
-            console.log(this.data.data);
-            console.log(preparedData);
             let ctx = document.getElementById('customChart').getContext('2d');
             let customChart = new Chart(ctx, {
                 type: 'pie',
@@ -263,7 +260,71 @@ var soldView = Vue.component('sold-view', {
     },
     template: `
     <div class="main">
+        <h3>Popularity of sold cars:</h3>
         <canvas id="customChart"></canvas>
+    </div>
+    `
+});
+
+var combustionView = Vue.component('combustion-view', {
+    data: function () {
+        let data = [];
+        // axios.get('https://api_do_sprzedanych_aut')
+        axios.get('/dane/combustion.json', {
+            method: 'HEAD',
+            mode: 'no-cors',
+        })
+            .then(result => {
+                this.data = result;
+            })
+        return {
+            data
+        }
+    },
+    methods: {
+        printChart() {
+            let preparedData = {
+                labels: [],
+                datasets: [{
+                    label: 'Combustion of cars',
+                    data: [],
+                    backgroundColor: [
+                    ],
+                    borderColor: [
+                    ],
+                }],
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Average combustion chart'
+                        }
+                    }
+                },
+
+            }
+            for (let car in this.data.data) {
+                preparedData.labels.push(this.data.data[car].model);
+                preparedData.datasets[0].data.push(this.data.data[car].combustion);
+                preparedData.datasets[0].backgroundColor.push(randomizeColor());
+                preparedData.datasets[0].borderColor.push(randomizeColor());
+            }
+            let ctx = document.getElementById('combustionChart').getContext('2d');
+            let customChart = new Chart(ctx, {
+                type: 'bar',
+                data: preparedData
+            });
+
+        }
+    },
+    template: `
+    <div class="main">
+        <h3>Combustion of cars:</h3>
+        <canvas id="combustionChart"></canvas>
     </div>
     `
 });
@@ -278,6 +339,7 @@ window.onload = function () {
             "car-select": carSelect,
             "configuration-table": configurationTable,
             "sold-view": soldView,
+            "combustion-view": combustionView,
         },
     });
 
@@ -286,6 +348,7 @@ window.onload = function () {
         vm.$refs.viewDiv.printSelection();
         vm.$refs.confTable.printSelectedPriceList();
         vm.$refs.soldChart.printChart();
+        vm.$refs.combustionView.printChart();
     };
 
     document.getElementById("clearButton").onclick = function () {
