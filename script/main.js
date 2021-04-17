@@ -1,5 +1,5 @@
 // TODO
-let currentSelectedModel;
+let temp = {};
 let current = [];
 
 var carSelect = Vue.component('car-select', {
@@ -12,6 +12,7 @@ var carSelect = Vue.component('car-select', {
             mode: 'no-cors',
         })
             .then(result => {
+                temp = result.data;
                 this.data = [
                     result.data.model,
                     result.data.color,
@@ -34,7 +35,7 @@ var carSelect = Vue.component('car-select', {
                 transmission_id: document.getElementById("transmission").value,
                 version_id: document.getElementById("version").value,
                 color_id: document.getElementById("color").value,
-                extras_ids: [...extras].map(el => el.firstChild.firstChild.value),
+                extras_ids: [...extras].map(el => el.firstChild.firstChild.checked == true && el.firstChild.firstChild.value),
             }
         },
         clearSelection() {
@@ -142,6 +143,76 @@ var carView = Vue.component('car-view', {
     `
 });
 
+var configurationTable = Vue.component('configuration-table', {
+    data: function () {
+        let priceList = [{
+            modelPrice: "1000",
+            colorPrice: "500",
+            enginePrice: "1000",
+            versionPrice: "1000",
+            transmissionPrice: "1000",
+            extrasPrice: "1000",
+            totalPrice: "1000",
+        }];
+        return {
+            priceList
+        };
+    },
+    methods: {
+        printSelectedPriceList() {
+            console.log(current.extras_ids);
+            console.log(temp.extras);
+
+            this.priceList[0].modelPrice = temp.model.filter(car => car.id == current.model_id)[0].price_model;
+            this.priceList[0].colorPrice = temp.color.filter(color => color.id == current.color_id)[0].price;
+            this.priceList[0].enginePrice = temp.engine.filter(engine => engine.id == current.engine_id)[0].price;
+            this.priceList[0].versionPrice = temp.version.filter(version => version.id == current.version_id)[0].price;
+            this.priceList[0].transmissionPrice = temp.transmission.filter(transmission => transmission.id == current.transmission_id)[0].price;
+            this.priceList[0].extrasPrice = temp.extras.filter(extra => current.extras_ids.includes('' + extra.id)).map(str => parseFloat(str.price)).reduce((x, y) => x + y);
+
+            this.priceList[0].totalPrice = parseFloat(this.priceList[0].modelPrice)
+                + parseFloat(this.priceList[0].colorPrice)
+                + parseFloat(this.priceList[0].enginePrice)
+                + parseFloat(this.priceList[0].versionPrice)
+                + parseFloat(this.priceList[0].transmissionPrice)
+                + parseFloat(this.priceList[0].extrasPrice);
+
+        }
+    },
+    template: `
+    <div class="main">
+        <h1>Car components price table</h1>
+        <div v-for="comp in priceList">
+           some text {{comp.modelPrice}}
+           <table>
+            <thead>
+                <tr>
+                    <td>Base model price:</td>
+                    <td>Color price:</td>
+                    <td>Engine price:</td>
+                    <td>Version price:</td>
+                    <td>Transmission price:</td>
+                    <td>Extras price:</td>
+                    <td>Total:</td>
+                </tr>
+            </thead>
+            </tbody>
+                <tr>
+                    <td>{{comp.modelPrice}}</td>
+                    <td>{{comp.colorPrice}}</td>
+                    <td>{{comp.enginePrice}}</td>
+                    <td>{{comp.versionPrice}}</td>
+                    <td>{{comp.transmissionPrice}}</td>
+                    <td>{{comp.extrasPrice}}</td>
+                    <td>{{comp.totalPrice}}</td>
+                </tr>
+            </tbody>
+           </table>
+        </div>
+
+    </div>
+    `
+});
 
 var vm;
 
@@ -150,13 +221,15 @@ window.onload = function () {
         el: '#app',
         components: {
             "car-view": carView,
-            "car-select": carSelect
-        }
+            "car-select": carSelect,
+            "configuration-table": configurationTable,
+        },
     });
 
     document.getElementById("searchButton").onclick = function () {
         vm.$refs.selectForm.storeSelection();
         vm.$refs.viewDiv.printSelection();
+        vm.$refs.confTable.printSelectedPriceList();
     };
 
     document.getElementById("clearButton").onclick = function () {
