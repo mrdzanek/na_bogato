@@ -307,9 +307,9 @@ var combustionView = Vue.component('combustion-view', {
                 },
 
             }
-            for (let car in this.data.data) {
-                preparedData.labels.push(this.data.data[car].model);
-                preparedData.datasets[0].data.push(this.data.data[car].combustion);
+            for (let i in this.data.data) {
+                preparedData.labels.push(this.data.data[i].model);
+                preparedData.datasets[0].data.push(this.data.data[i].combustion);
                 preparedData.datasets[0].backgroundColor.push(randomizeColor());
                 preparedData.datasets[0].borderColor.push(randomizeColor());
             }
