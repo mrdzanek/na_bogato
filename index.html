@@ -2,193 +2,192 @@
 <html lang="pl">
 
 <head>
-    <title>Car Selector</title>
-    <meta charset="UTF-8">
-    <link href="style/main.css" rel="stylesheet" type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
-    <script src="script/main.js"></script>
-<!-- Style and Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-<!-- Canvas -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>   
+  <title>Car Selector</title>
+  <meta charset="UTF-8">
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+  <script src="script/main.js"></script>
+  <!-- Style and Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <!-- Canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body>
-<!-- Form -->
-<div class="sidenav">
+  <!-- Form -->
+  <!-- <div class="sidenav">
     <h4>Configure your car </h4><br>
     <select class="form-control" id="model">
-        <option selected>Model</option>
-        <option>{{models.name}}</option>
-    </select><br>  
+      <option selected>Model</option>
+      <option>{{models.name}}</option>
+    </select><br>
 
     <select class="form-control" id="engine">
-        <option selected>Engine</option>
-        <option>{{engine.name}}</option>
+      <option selected>Engine</option>
+      <option>{{engine.name}}</option>
     </select><br>
-    
+
     <select class="form-control" id="transmition">
-        <option selected>Transmition</option>
-        <option>{{transmition.name}}</option>
+      <option selected>Transmition</option>
+      <option>{{transmition.name}}</option>
     </select><br>
 
     <select class="form-control" id="version">
-        <option selected>Version</option>
-        <option>{{version.name}}</option>
+      <option selected>Version</option>
+      <option>{{version.name}}</option>
     </select><br>
 
     <select class="form-control" id="color">
-        <option selected>Color Test</option>
-        <!-- TEST ONLY -->
-        <option style= "background: aquamarine ; color:black">{{color.name}}</option>
-        <option style= "background: crimson ; color:black">{{color.name}}</option>
-        <option style= "background: #cc8899 ; color:black">{{color.name}}</option>
-        <option style= "background: violet ; color:black">{{color.name}}</option>
-        <option style= "background: goldenrod ; color:black">{{color.name}}</option>
+      <option selected>Color Test</option>
+      <option style="background: aquamarine ; color:black">{{color.name}}</option>
+      <option style="background: crimson ; color:black">{{color.name}}</option>
+      <option style="background: #cc8899 ; color:black">{{color.name}}</option>
+      <option style="background: violet ; color:black">{{color.name}}</option>
+      <option style="background: goldenrod ; color:black">{{color.name}}</option>
     </select><br>
 
     <fieldset class="form-group" id="extras">
-        <legend>Extras</legend>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" value="" checked="">
-            {{extras.name}}
-          </label>
-        </div>
-      </fieldset>
+      <legend>Extras</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="" checked="">
+          {{extras.name}}
+        </label>
+      </div>
+    </fieldset>
 
-      <button type="button" class="btn btn-success">Search</button>
-      <button type="button" class="btn btn-danger">Clear</button>
+    <button type="button" class="btn btn-success">Search</button>
+    <button type="button" class="btn btn-danger">Clear</button>
 
+  </div>
+
+  <div class="main">
+    <h1>Car Selector</h1>
+
+
+    <img
+      src="https://www.bmwgroup-classic.com/content/dam/grpw/websites/bmwgroup-classic_com/classic-heart/blog/classic-heart_pop-up-layer/2018/buchi/BMW_Classic_Japan_Still01_2224x1482px.jpg.grp-transform/xxlarge/BMW_Classic_Japan_Still01_2224x1482px.jpg"
+      alt="BMW">
+    <br>
+    Basic price: {{model.price_model}} <br>
+    Additional costs: sum()
+
+    <br><br><br><br><br>
+
+    <canvas id="myChart" width="30" height="10" chart-labels="chart.labels">
+    </canvas>
+
+  </div> -->
+
+<div id="app">
+  <car-view></car-view>
 </div>
 
-<div class="main">
-  <h1>Car Selector</h1>
-
-
-<img src="https://www.bmwgroup-classic.com/content/dam/grpw/websites/bmwgroup-classic_com/classic-heart/blog/classic-heart_pop-up-layer/2018/buchi/BMW_Classic_Japan_Still01_2224x1482px.jpg.grp-transform/xxlarge/BMW_Classic_Japan_Still01_2224x1482px.jpg" alt="BMW">
-<br>
-Basic price: {{model.price_model}} <br>
-Additional costs: sum()
-
-<br><br><br><br><br>
-
-<!-- TO DELETE - TEST ONLY -->
-<canvas 
-  id="myChart" 
-  width="30" 
-  height="10" 
-  chart-labels="chart.labels">
-</canvas>
-  
-</div>  
 
 
 
 
 
+  <!-- TO DELETE - TEST ONLY -->
+  <!-- <script>
 
-
-
-<!-- TO DELETE - TEST ONLY -->
-<script>
-  
     var languageleLabel = [];
     var languagePopularity = [];
 
     var app = new Vue({
-    el: '#app',
+      // el: '#app',
       data: {
-      programing_language: [
-        {
-          language: '1',
-          popularity: 25.95
-        },
-        {
-          language: '2',
-          popularity: 21.42
-        },
-        {
-          language: '3',
-          popularity: 8.26
-        },
-        {
-          language: '4',
-          popularity: 7.62
-        },
-        {
-          language: '5',
-          popularity: 7.37
-        }
-      ]
-    },
-
-    mounted: function(){
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const chart = new Chart(ctx, {
-
-    type: 'pie',
-
-    data: {
-        labels: this.createLabel,
-        datasets: [{
-            label: 'Programing languages popularity',
-            backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            
-            data: this.createData
-        }],
-      },
-      
-      options:{}
-    })
-  },
-
-
-  
-
-    computed: {
-      createLabel: function () {
-        var i = 0;
-        for (i in this.programing_language)
+        programing_language: [
           {
-            languageleLabel[i] = this.programing_language[i].language; 
-          } 
+            language: '1',
+            popularity: 25.95
+          },
+          {
+            language: '2',
+            popularity: 21.42
+          },
+          {
+            language: '3',
+            popularity: 8.26
+          },
+          {
+            language: '4',
+            popularity: 7.62
+          },
+          {
+            language: '5',
+            popularity: 7.37
+          }
+        ]
+      },
+
+      mounted: function () {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+
+          type: 'pie',
+
+          data: {
+            labels: this.createLabel,
+            datasets: [{
+              label: 'Programing languages popularity',
+              backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+              ],
+
+              data: this.createData
+            }],
+          },
+
+          options: {}
+        })
+      },
+
+
+
+
+      computed: {
+        createLabel: function () {
+          var i = 0;
+          for (i in this.programing_language) {
+            languageleLabel[i] = this.programing_language[i].language;
+          }
           return languageleLabel
-      },
-      createData: function () {
-        var i = 0;
-        for (i in this.programing_language)
-          {
+        },
+        createData: function () {
+          var i = 0;
+          for (i in this.programing_language) {
             languagePopularity[i] = this.programing_language[i].popularity;
           }
-        return languagePopularity
-      }
-    },
-  })
-</script>
+          return languagePopularity
+        }
+      },
+    })
+  </script> -->
 
 </body>
 
