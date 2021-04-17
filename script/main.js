@@ -146,13 +146,13 @@ var carView = Vue.component('car-view', {
 var configurationTable = Vue.component('configuration-table', {
     data: function () {
         let priceList = [{
-            modelPrice: "1000",
-            colorPrice: "500",
-            enginePrice: "1000",
-            versionPrice: "1000",
-            transmissionPrice: "1000",
-            extrasPrice: "1000",
-            totalPrice: "1000",
+            modelPrice: "0",
+            colorPrice: "0",
+            enginePrice: "0",
+            versionPrice: "0",
+            transmissionPrice: "0",
+            extrasPrice: "0",
+            totalPrice: "0",
         }];
         return {
             priceList
@@ -160,15 +160,19 @@ var configurationTable = Vue.component('configuration-table', {
     },
     methods: {
         printSelectedPriceList() {
-            console.log(current.extras_ids);
-            console.log(temp.extras);
+            let filteredModel = temp.model.filter(car => car.id == current.model_id);
+            let filteredColors = temp.color.filter(color => color.id == current.color_id);
+            let filteredEngines = temp.engine.filter(engine => engine.id == current.engine_id);
+            let filteredVersion = temp.version.filter(version => version.id == current.version_id);
+            let filteredTransmission = temp.transmission.filter(transmission => transmission.id == current.transmission_id);
+            let filteredExtras = temp.extras.filter(extra => current.extras_ids.includes('' + extra.id)).map(str => parseFloat(str.price));
 
-            this.priceList[0].modelPrice = temp.model.filter(car => car.id == current.model_id)[0].price_model;
-            this.priceList[0].colorPrice = temp.color.filter(color => color.id == current.color_id)[0].price;
-            this.priceList[0].enginePrice = temp.engine.filter(engine => engine.id == current.engine_id)[0].price;
-            this.priceList[0].versionPrice = temp.version.filter(version => version.id == current.version_id)[0].price;
-            this.priceList[0].transmissionPrice = temp.transmission.filter(transmission => transmission.id == current.transmission_id)[0].price;
-            this.priceList[0].extrasPrice = temp.extras.filter(extra => current.extras_ids.includes('' + extra.id)).map(str => parseFloat(str.price)).reduce((x, y) => x + y);
+            this.priceList[0].modelPrice = filteredModel.length == 0 ? 0 : filteredModel[0].price_model;
+            this.priceList[0].colorPrice = filteredColors.length == 0 ? 0 : filteredColors[0].price;
+            this.priceList[0].enginePrice = filteredEngines.length == 0 ? 0 : filteredEngines[0].price;
+            this.priceList[0].versionPrice = filteredVersion.length == 0 ? 0 : filteredVersion[0].price;
+            this.priceList[0].transmissionPrice = filteredTransmission.length == 0 ? 0 : filteredTransmission[0].price;
+            this.priceList[0].extrasPrice = filteredExtras.length == 0 ? 0 : filteredExtras.reduce((x, y) => x + y);
 
             this.priceList[0].totalPrice = parseFloat(this.priceList[0].modelPrice)
                 + parseFloat(this.priceList[0].colorPrice)
