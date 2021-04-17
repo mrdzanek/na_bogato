@@ -9,7 +9,7 @@ body {
     z-index: 1;
     top: 5px;
     left: 5px;
-    background: rgb(0, 0, 0);
+    background: rgb(64, 64, 64);
     overflow-x: hidden;
     padding: 8px 20px;
   }
