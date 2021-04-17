@@ -1,9 +1,28 @@
 // TODO
+let currentSelectedModel;
+let current = [];
+// axios.defaults.baseURL = 'https://wizard.uek.krakow.pl/~s209281/dane/';
 
-Vue.component('car-view', {
+
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+Vue.component('car-select', {
     data: function () {
         let data = [];
-        axios.get('https://my.api.mockaroo.com/car_selector_3.json?key=e574cd50&fbclid=IwAR1G9HnBHD3sgcm5Sz1lWbjCiTj2k4dcXIG2rlUtgiI2gLzmcBhvJJJ9g1I')
+        this.current = {
+            model_id: "",
+            engine_id: "",
+            transmition_id: "",
+            version_id: "",
+            color_id: "",
+            extras_ids: []
+        };
+
+        // axios.get('https://my.api.mockaroo.com/car_selector_4.json?key=e574cd50&fbclid=IwAR3dxNLw-NtJGaQrjk8HwqvLtj5l1Ib5vdYXyPc9LxSOKGFEX3lGSTQuxD8')
+        axios.get('https://wizard.uek.krakow.pl/~s209281/dane/dane.json', {
+            method: 'HEAD',
+            mode: 'no-cors',
+        })
             .then(result => {
                 this.data = [
                     result.data.model,
@@ -11,8 +30,7 @@ Vue.component('car-view', {
                     result.data.engine,
                     result.data.extras,
                     result.data.version,
-                    result.data.transmission,
-                    result.data.image
+                    result.data.transmission
                 ]
             })
         return {
@@ -29,14 +47,14 @@ Vue.component('car-view', {
     <div class="sidenav">
         <form>
             <h4>Configure your car </h4><br>
-            <select class="form-control" id="model">
+            <select class="form-control" id="model" v-model="current.model_id">
                 <option selected value="unselected">Model</option>
-                <option v-for="model in this.data[0]" v-bind:value="model.id""> {{model.name}}</option>
-        </select><br>
+                <option v-for="model in this.data[0]" v-bind:value="model.id"> {{model.name}}</option>
+            </select><br>
 
         <select class=" form-control" id="engine">
                 <option selected value="unselected">Engine</option>
-                <option v-for="engine in this.data[2]" v-bind:value="engine.id""> {{engine.name}}</option>
+                <option v-for="engine in this.data[2]" v-bind:value="engine.id"> {{engine.name}}</option>
         </select><br>
 
         <select class=" form-control" id="transmition">
@@ -72,29 +90,56 @@ Vue.component('car-view', {
 
     </form>
     </div>
-    <div class="main">
-        <h1>Car Selector</h1>
-
-
-        <img src="https://www.bmwgroup-classic.com/content/dam/grpw/websites/bmwgroup-classic_com/classic-heart/blog/classic-heart_pop-up-layer/2018/buchi/BMW_Classic_Japan_Still01_2224x1482px.jpg.grp-transform/xxlarge/BMW_Classic_Japan_Still01_2224x1482px.jpg"
-            alt="BMW">
-        <br>
-        Basic price: <br>
-        Additional costs: sum()
-
-        <br><br><br><br><br>
-
-        <!-- TO DELETE - TEST ONLY -->
-        <canvas id="myChart" width="30" height="10" chart-labels="chart.labels">
-        </canvas>
-
-    </div>
 </div>
 `
 });
+
+Vue.component('car-view', {
+    data: function () {
+        let data = [];
+        // axios.get('https://my.api.mockaroo.com/car_image.json?key=e574cd50&fbclid=IwAR3H95LoVMFKjiLU-Y7bouMJzTd_i-vboi6thtxKasa9OMlowaD7Sq8VPvk')
+        axios.get('https://wizard.uek.krakow.pl/~s209281/dane/img.json',{
+            method: 'HEAD',
+            mode: 'no-cors',
+        })
+            .then(result => {
+                this.data = result.data;
+            })
+        return {
+            data
+        }
+    },
+    methods: {
+        // getImgUrl(id) {
+        //     return this.data[1][0].url;
+        // }
+    },
+    template: `
+    <div class="main">
+        <h1>Car Selector</h1>
+        <div v-for="car in this.data">
+           Car model name: {{car.model}} <br>
+           <img v-bind:src="car.car_image">
+        </div>
+
+    </div>
+    `
+});
+
 var app;
+
 window.onload = function () {
     app = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            current: {
+                model_id: "",
+                engine_id: "",
+                transmition_id: "",
+                version_id: "",
+                color_id: "",
+                extras_ids: [],
+            }
+        }
     });
 }
