@@ -1,12 +1,8 @@
 // TODO
 let currentSelectedModel;
 let current = [];
-// axios.defaults.baseURL = 'https://wizard.uek.krakow.pl/~s209281/dane/';
 
-
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
-Vue.component('car-select', {
+var carSelect = Vue.component('car-select', {
     data: function () {
         let data = [];
         this.current = {
@@ -38,16 +34,24 @@ Vue.component('car-select', {
         }
     },
     methods: {
-        // getImgUrl(id) {
-        //     return this.data[1][0].url;
-        // }
+        storeSelection() {
+            let extras = document.getElementById("extras").children
+            current = {
+                model_id: document.getElementById("model").value,
+                engine_id: document.getElementById("engine").value,
+                transmission_id: document.getElementById("transmission").value,
+                version_id: document.getElementById("version").value,
+                color_id: document.getElementById("color").value,
+                extras: [...extras].map(el => el.firstChild.firstChild.value),
+            }
+        }
     },
     template: `
 <div>
     <div class="sidenav">
         <form>
             <h4>Configure your car </h4><br>
-            <select class="form-control" id="model" v-model="current.model_id">
+            <select class="form-control" id="model">
                 <option selected value="unselected">Model</option>
                 <option v-for="model in this.data[0]" v-bind:value="model.id"> {{model.name}}</option>
             </select><br>
@@ -57,8 +61,8 @@ Vue.component('car-select', {
                 <option v-for="engine in this.data[2]" v-bind:value="engine.id"> {{engine.name}}</option>
         </select><br>
 
-        <select class=" form-control" id="transmition">
-                <option selected value="unselected">Transmition</option>
+        <select class=" form-control" id="transmission">
+                <option selected value="unselected">Transmission</option>
                 <option v-for="transmission in this.data[5]" v-bind:value="transmission.id"> {{transmission.name}}
                 </option>
             </select><br>
@@ -75,8 +79,8 @@ Vue.component('car-select', {
                     {{color.name}}</option>
             </select><br>
 
+            <legend>Extras</legend>
             <fieldset class="form-group" id="extras">
-                <legend>Extras</legend>
                 <div v-for="extra in this.data[3]" class="form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" v-bind:value="extra.id">
@@ -85,8 +89,8 @@ Vue.component('car-select', {
                 </div>
             </fieldset>
 
-            <input type="button" class="btn btn-success" value="Search">
-            <input type="button" class="btn btn-danger" value="Clear">
+            <input type="button" class="btn btn-success" value="Search" id="searchButton">
+            <input type="button" class="btn btn-danger" value="Clear" id="clearButton">
 
     </form>
     </div>
@@ -94,30 +98,40 @@ Vue.component('car-select', {
 `
 });
 
-Vue.component('car-view', {
+var carView = Vue.component('car-view', {
     data: function () {
         let data = [];
         // axios.get('https://my.api.mockaroo.com/car_image.json?key=e574cd50&fbclid=IwAR3H95LoVMFKjiLU-Y7bouMJzTd_i-vboi6thtxKasa9OMlowaD7Sq8VPvk')
-        axios.get('/dane/img.json',{
+        axios.get('/dane/img.json', {
             method: 'HEAD',
             mode: 'no-cors',
         })
             .then(result => {
-                this.data = result.data;
+                this.data = {
+                    cars: result.data,
+                    temp: result.data
+                };
             })
         return {
             data
         }
     },
     methods: {
-        // getImgUrl(id) {
-        //     return this.data[1][0].url;
-        // }
+        printSelection() {
+            console.log(current)
+            console.log(this.data)
+            if (current.model_id == "unselected") {
+                this.data.temp = this.data.cars;
+            } else {
+                this.data.temp = this.data.cars.filter(car => car.model_id == current.model_id);
+            }
+            console.log(this.current)
+        }
     },
     template: `
     <div class="main">
         <h1>Car Selector</h1>
-        <div v-for="car in this.data">
+        <div v-for="car in this.data.temp">
            Car model name: {{car.model}} <br>
            <img v-bind:src="car.car_image">
         </div>
@@ -126,20 +140,18 @@ Vue.component('car-view', {
     `
 });
 
-var app;
+var vm;
 
 window.onload = function () {
-    app = new Vue({
+    vm = new Vue({
         el: '#app',
-        data: {
-            current: {
-                model_id: "",
-                engine_id: "",
-                transmition_id: "",
-                version_id: "",
-                color_id: "",
-                extras_ids: [],
-            }
+        components: {
+            "car-view": carView,
+            "car-select": carSelect
         }
     });
+    document.getElementById("searchButton").onclick = function () {
+        vm.$refs.selectForm.storeSelection();
+        vm.$refs.viewDiv.printSelection();
+    };
 }
