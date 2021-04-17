@@ -3,7 +3,6 @@
 Vue.component('car-view', {
     data: function () {
         let data = [];
-        // axios.get('https://my.api.mockaroo.com/car_selector_2_image.json?key=e574cd50&fbclid=IwAR31ESIbtVWAeWq_4ptz5VXh4BosKVyj9wFqObqgdMszzPfx_1VX4jYYGoY')
         axios.get('https://my.api.mockaroo.com/car_selector_3.json?key=e574cd50&fbclid=IwAR1G9HnBHD3sgcm5Sz1lWbjCiTj2k4dcXIG2rlUtgiI2gLzmcBhvJJJ9g1I')
             .then(result => {
                 this.data = [
