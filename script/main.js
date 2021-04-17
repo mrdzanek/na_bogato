@@ -121,8 +121,6 @@ var carView = Vue.component('car-view', {
     },
     methods: {
         printSelection() {
-            console.log(current)
-            console.log(this.data)
             if (current.model_id == "unselected") {
                 this.data.temp = this.data.cars;
             } else {
@@ -187,7 +185,6 @@ var configurationTable = Vue.component('configuration-table', {
     <div class="main">
         <h1>Car components price table</h1>
         <div v-for="comp in priceList">
-           some text {{comp.modelPrice}}
            <table>
             <thead>
                 <tr>
@@ -218,6 +215,59 @@ var configurationTable = Vue.component('configuration-table', {
     `
 });
 
+var soldView = Vue.component('sold-view', {
+    data: function () {
+        let data = [];
+        // axios.get('https://api_do_sprzedanych_aut')
+        axios.get('/dane/sold.json', {
+            method: 'HEAD',
+            mode: 'no-cors',
+        })
+            .then(result => {
+                this.data = result;
+            })
+        return {
+            data
+        }
+    },
+    methods: {
+        printChart() {
+            let preparedData = {
+                labels: [],
+                datasets: [{
+                    label: 'Cars popularity',
+                    data: [],
+                    backgroundColor: [
+                    ],
+                    borderColor: [
+                    ],
+                }]
+
+            }
+            for (let car in this.data.data) {
+                console.log(this.data.data[car].number_sold)
+                preparedData.labels.push(this.data.data[car].model_sold);
+                preparedData.datasets[0].data.push(this.data.data[car].number_sold);
+                preparedData.datasets[0].backgroundColor.push(randomizeColor());
+                preparedData.datasets[0].borderColor.push(randomizeColor());
+            }
+            console.log(this.data.data);
+            console.log(preparedData);
+            let ctx = document.getElementById('customChart').getContext('2d');
+            let customChart = new Chart(ctx, {
+                type: 'pie',
+                data: preparedData
+            });
+
+        }
+    },
+    template: `
+    <div class="main">
+        <canvas id="customChart"></canvas>
+    </div>
+    `
+});
+
 var vm;
 
 window.onload = function () {
@@ -227,6 +277,7 @@ window.onload = function () {
             "car-view": carView,
             "car-select": carSelect,
             "configuration-table": configurationTable,
+            "sold-view": soldView,
         },
     });
 
@@ -234,6 +285,7 @@ window.onload = function () {
         vm.$refs.selectForm.storeSelection();
         vm.$refs.viewDiv.printSelection();
         vm.$refs.confTable.printSelectedPriceList();
+        vm.$refs.soldChart.printChart();
     };
 
     document.getElementById("clearButton").onclick = function () {
@@ -241,4 +293,17 @@ window.onload = function () {
         vm.$refs.selectForm.storeSelection();
         vm.$refs.viewDiv.printSelection();
     };
+}
+
+function randomizeColor() {
+    return 'rgba('
+        + getRandomIntInclusive(0, 255) + ' ,'
+        + getRandomIntInclusive(0, 255) + ' ,'
+        + getRandomIntInclusive(0, 255) + ' ,'
+        + '1)';
+}
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
