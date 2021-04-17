@@ -292,6 +292,7 @@ window.onload = function () {
         vm.$refs.selectForm.clearSelection();
         vm.$refs.selectForm.storeSelection();
         vm.$refs.viewDiv.printSelection();
+        vm.$refs.confTable.printSelectedPriceList();
     };
 }
 
