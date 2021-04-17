@@ -19,7 +19,7 @@ Vue.component('car-select', {
         };
 
         // axios.get('https://my.api.mockaroo.com/car_selector_4.json?key=e574cd50&fbclid=IwAR3dxNLw-NtJGaQrjk8HwqvLtj5l1Ib5vdYXyPc9LxSOKGFEX3lGSTQuxD8')
-        axios.get('https://wizard.uek.krakow.pl/~s209281/dane/dane.json', {
+        axios.get('/dane/dane.json', {
             method: 'HEAD',
             mode: 'no-cors',
         })
@@ -98,7 +98,7 @@ Vue.component('car-view', {
     data: function () {
         let data = [];
         // axios.get('https://my.api.mockaroo.com/car_image.json?key=e574cd50&fbclid=IwAR3H95LoVMFKjiLU-Y7bouMJzTd_i-vboi6thtxKasa9OMlowaD7Sq8VPvk')
-        axios.get('https://wizard.uek.krakow.pl/~s209281/dane/img.json',{
+        axios.get('/dane/img.json',{
             method: 'HEAD',
             mode: 'no-cors',
         })

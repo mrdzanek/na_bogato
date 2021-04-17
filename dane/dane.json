@@ -1,0 +1,186 @@
+{
+	"model": [
+		{
+			"id": 1,
+			"name": "BMW serii 2 Coupe",
+			"price_model": 176148.98
+		},
+		{
+			"id": 2,
+			"name": "BMW serii 2 Gran Coupe",
+			"price_model": 575001.03
+		},
+		{
+			"id": 3,
+			"name": "BMW serii 2 Cabrio",
+			"price_model": 727043.68
+		},
+		{
+			"id": 4,
+			"name": "BMW serii 2 Active Tourer",
+			"price_model": 983879.65
+		},
+		{
+			"id": 5,
+			"name": "BMW serii 2 Gran Tourer",
+			"price_model": 193149.71
+		},
+		{
+			"id": 6,
+			"name": "BMW serii 3 Limuzyna",
+			"price_model": 318860.17
+		},
+		{
+			"id": 7,
+			"name": "BMW serii 3 Touring",
+			"price_model": 307872.64
+		},
+		{
+			"id": 8,
+			"name": "BMW serii 5 Touring",
+			"price_model": 856450.43
+		},
+		{
+			"id": 9,
+			"name": "BMW serii 7 Limuzyna",
+			"price_model": 746955.85
+		},
+		{
+			"id": 10,
+			"name": "BMW serii 8 Coupe",
+			"price_model": 244000.01
+		}
+	],
+	"color": [
+		{
+			"id": 1,
+			"name": "Blue",
+			"hex": "#0000FF",
+			"price": 37202
+		},
+		{
+			"id": 2,
+			"name": "Fuscia",
+			"hex": "#ff77ff",
+			"price": 39309
+		},
+		{
+			"id": 3,
+			"name": "Pink",
+			"hex": "#FFC0CB",
+			"price": 22316
+		},
+		{
+			"id": 4,
+			"name": "Mauv",
+			"hex": "#b784a7",
+			"price": 48912
+		},
+		{
+			"id": 5,
+			"name": "Red",
+			"hex": "#FF0000",
+			"price": 15281
+		}
+	],
+	"engine": [
+		{
+			"id": 1,
+			"name": "petrol",
+			"price": 34402
+		},
+		{
+			"id": 2,
+			"name": "diesel",
+			"price": 14059
+		}
+	],
+	"extras": [
+		{
+			"id": 1,
+			"name": "extended guarantee",
+			"price": 6699
+		},
+		{
+			"id": 2,
+			"name": "heated seats",
+			"price": 2621
+		}
+	],
+	"version": [
+		{
+			"id": 1,
+			"name": "standard",
+			"price": 93974
+		},
+		{
+			"id": 2,
+			"name": "premium",
+			"price": 56726
+		}
+	],
+	"transmission": [
+		{
+			"id": 1,
+			"name": "manual",
+			"price": 20343
+		},
+		{
+			"id": 2,
+			"name": "automatic",
+			"price": 16898
+		}
+	],
+	"image": [
+		{
+			"model_id": 1,
+			"model_name": "BMW serii 2 Coupe",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYf7Gf%2510tLhu1XzWVo7puMLWFmdkAj5DOP7oo%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giZ%25NF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVY1nnWh1DMztPloeqVYDafz9jjmBYXGuSDOPLFtBZ8X5mMxoRCz1lr"
+		},
+		{
+			"model_id": 2,
+			"model_name": "BMW serii 2 Gran Coupe",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfjnsd10tLhu1XzWVo7puMLWFmdkAj5DOPFtpAZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giZFNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVyKWh1DMztrDdeqVYDafz9jjmBYXGuSDOPLFtBZ8X5mMxoRCz1lr"
+		},
+		{
+			"model_id": 3,
+			"model_name": "BMW serii 2 Cabrio",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYf7Gf%2510tLhu1XzWVo7puMLWFmdkAj5DOP7Wo%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74gaAINF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYpeGWh1DMztio9eqVYDafHLbjmztYRSF3y67aftxdIWCw1RSfWQvSK%25VxdSeZGcAuzWQdjc9Ia3aeZQ6KCwrXRjcZwBEcSrx6Kc%252NKJ4WwBKupkmjFe%252B3in1lIjup2XH5VGv63iprJ8OaGwXHi4TPge9%25rJHFlMNIou4TJIsHNSL3FlTv0JkCyXIslGAT9bCrv0s9Ol0uE4GA0ogsU3NF9OALU0bnkIogOybAwBnvLUgChO035GybUEqgtV89ChbNmUfNPoEqhk7bSZMLNmqn1SSCDyk7m5VdH9YCn178zQZ8tE5V1PaZcMfN8zVMRcKlSkPazDxKBcdnMRaYWB2fQ5DxRte2pKZ8YWxfjpIBcPteWS6i%25XKMfjedwHosBDS6jQ%25J012Ydw6ZuTaeptQ%25wc3ZmeifZu%25KXc7HHSc3uBrK7JJdKX3243lxTQBrXpFhtilZ24riIngkscC4bVgvrt3RmFCoub%25cXJaHWpBPh"
+		},
+		{
+			"model_id": 4,
+			"model_name": "BMW serii 2 Active Tourer",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfvufM10tLhu1XzWVo7puMLWFmdkAj5DOPE%25A%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74gaUNNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYpeMWh1DMztrDdeqVYDafMsLjmBYXGuSDOPLFtBZ8X5mMxoRCz1lr"
+		},
+		{
+			"model_id": 5,
+			"model_name": "BMW serii 2 Gran Tourer",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfvufM10tLhu1XzWVo7puMLWFmdkAj5DOPETo%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74gaAINF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYV2GWh1DMztiD5eqVYDafHS7jmztYRSJOM67aftxdT%25yw1RSfWQluS%25VxdSeZsNEuzWQdjc0ka3aeZQ6KAneXRjcZwBLnUrx6Kc%252yKH4WwBKupCoZFe%252B3inXVIjup2XH5rGv63iprJ8MaGwXHi4TPaA9%25rJHFlMUxou4TJIsDKvL3FlTv0JkgyXIslGAT9bCrv0s9Ol0uE4GA0ogsU3NF9OALU0bnkIogOybAsunvLUgChOY15GybUEqgtp89ChbNmUfaPoEqhk7bIUMLNmqn1SWYDyk7m5VdQ5YCn178zQZPtE5V1PaZcTfN8zVMRcKQSkPazDxKerdnMRaYWDBEQ5DxRteYOVZ8YWxfjtgccPteWS6faaKMfjedwSUBBDS6jQ%25dvP2Ydw6Zu6T4ptQ%25wc3wkFifZu%25KX%25mdHSc3uBruK1JdKX3243lfTQLXg7AF3D%25zhrLGwg6QuiVpRBc5U"
+		},
+		{
+			"model_id": 6,
+			"model_name": "BMW serii 3 Limuzyna",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfvrZg10tLhu1XzWVo7puMLWFmdkAj5DOP4tEpZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giASNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYXMSWh1DMztz01eqVYDafM3vjmBYXGuSDOPLFtBZ8X5mMxoRCz1lr"
+		},
+		{
+			"model_id": 7,
+			"model_name": "BMW serii 3 Touring",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfzKxG10tLhu1XzWVo7puMLWFmdkAj5DOPEho%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74g36wNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVbsWh1DMztIZReqVYDafaiojmztYRSRUx67aftxdTAww1RSfWQlUY%25VxdSeZsNEuzWQdjc0kj3aeZQ6KokgXRjcZwBLGdrx6Kc%252Nu74WwBKupk3IFe%252B3in2ZIjup2XH5psv63iprJ8KGGwXHi4TPgR9%25rJHFlMUjou4TJIsHNyL3FlTv0JlwyXIslGAT5YCrv0s9Ol%25TE4GA0ogsuoNF9OALUPMykIogOybMD4nvLUgChDYK5GybUEqYtk89ChbNmtQiPoEqhk7hDGMLNmqn1GHcDyemQpSVqIbJK7eRUQgyh8H5lkEXZ"
+		},
+		{
+			"model_id": 8,
+			"model_name": "BMW serii 5 Touring",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYf7G8l10tLhu1XzWVo7puMLWFmdkAj5DOPFttBZ8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74g37TNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYVXeWh1DMztIVmeqVYDafHS6jmztYRSJTN67aftxdTgDw1RSfWQluC%25VxdSeZsNEuzWQdjc0k83aeZQ6KokxXRjcZwBL%255rx6Kc%252yu74WwBKupCouFe%252B3iELjIjup2XHNyNv63iprJkRDGwXHi4TPCt9%25rJHFlMIxou4TJIsDRXL3FlTv0YWUyXIslGAteECrv0s9Of8zE4GA0ogSElNF9OALUdWckIogOybQ55nvLUgChZS15GybUEqcdx89ChbNmU2PPoEqhk7bSEMLNmqn1hdmDyk7m5VqQpYCn178zm9MtE5V1PaZILfN8zVMRcGdSkPazDxKBsdnMRaYWB4cQ5DxRte2FNZ8YWxfjpGIcPteWS6ilEKMfjedwHs2BDS6jQ%25db22YI6lUJujnWqAwIrxlRYechZ7dfCs"
+		},
+		{
+			"model_id": 9,
+			"model_name": "BMW serii 7 Limuzyna",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYfakIl10tLhu1XzWVo7puMLWFmdkAj5DOP4NV%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giASNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYXMSWh1DMztrOIeqVYDafM3vjmztYRSJBK67aftxdRLsw1pf4oXQtUDCvSpKM4P1YeyWNRz0F"
+		},
+		{
+			"model_id": 10,
+			"model_name": "BMW serii 8 Coupe",
+			"url": "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-7331cqgv2Z7d%25i02uCaY3MuO2kOHUtWPfbYf7Sil10tLhu1XzWVo7puMLWFmdkAj5DOPmmf%25Z8XgY1nTNIowJ4HO3zkyXq%25sGM8snGhMQSk%2508Xc9Vo74giAkNF1VgxNJ0%25ls2oub5imC2yRCzXeTt%25ViPRKVZVYXMSWh1DMztzHJeqVYDafM3vjmBYXGuSDOPLFtBZ8X5mMxoRCz1lr"
+		}
+	]
+}
