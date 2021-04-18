@@ -1,4 +1,3 @@
-// TODO
 let temp = {};
 let current = [];
 
@@ -51,8 +50,7 @@ var carSelect = Vue.component('car-select', {
     },
     template: `
 <div>
-    <div class="sidenav">
-        <form>
+     <form>
             <h4>Configure your car </h4><br>
             <select class="form-control" id="model">
                 <option selected value="unselected">Model</option>
@@ -96,7 +94,6 @@ var carSelect = Vue.component('car-select', {
             <input type="button" class="btn btn-danger" value="Clear" id="clearButton">
 
     </form>
-    </div>
 </div>
 `
 });
@@ -129,7 +126,7 @@ var carView = Vue.component('car-view', {
         }
     },
     template: `
-    <div class="main">
+    <div>
         <h1>Car Selector</h1>
         <div v-for="car in this.data.temp">
            Car model name: {{car.model}} <br>
@@ -182,10 +179,10 @@ var configurationTable = Vue.component('configuration-table', {
         }
     },
     template: `
-    <div class="main">
-        <h1>Car components price table</h1>
+    <div>
+        <h3>Car components price table</h3>
         <div v-for="comp in priceList">
-           <table>
+           <table class="table table-dark table-striped">
             <thead>
                 <tr>
                     <td>Base model price:</td>
@@ -210,8 +207,9 @@ var configurationTable = Vue.component('configuration-table', {
             </tbody>
            </table>
         </div>
-
     </div>
+    <br>
+    <br>
     `
 });
 
@@ -259,7 +257,8 @@ var soldView = Vue.component('sold-view', {
         }
     },
     template: `
-    <div class="main">
+    <div>
+        <br>
         <h3>Popularity of sold cars:</h3>
         <canvas id="customChart"></canvas>
     </div>
@@ -322,7 +321,7 @@ var combustionView = Vue.component('combustion-view', {
         }
     },
     template: `
-    <div class="main">
+    <div>
         <h3>Combustion of cars:</h3>
         <canvas id="combustionChart"></canvas>
     </div>
