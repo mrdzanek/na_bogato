@@ -35,7 +35,7 @@ var carSelect = Vue.component('car-select', {
                 transmission_id: document.getElementById("transmission").value,
                 version_id: document.getElementById("version").value,
                 color_id: document.getElementById("color").value,
-                extras_ids: [...extras].map(el => el.firstChild.firstChild.checked == true && el.firstChild.firstChild.value),
+                extras_ids: [...extras].filter(el => el.firstChild.firstChild.checked == true ).map(el => el.firstChild.firstChild.value),
             }
         },
         clearSelection() {
@@ -46,7 +46,7 @@ var carSelect = Vue.component('car-select', {
             document.getElementById("transmission").value = "unselected";
             document.getElementById("version").value = "unselected";
             document.getElementById("color").value = "unselected";
-            [...extras].forEach(el => el.firstChild.firstChild.value = "unselected");
+            [...extras].forEach(el => el.firstChild.firstChild.checked = false);
         }
     },
     template: `
