@@ -208,15 +208,13 @@ var configurationTable = Vue.component('configuration-table', {
            </table>
         </div>
     </div>
-    <br>
-    <br>
     `
 });
 
 var soldView = Vue.component('sold-view', {
     data: function () {
         let data = [];
-        // axios.get('https://api_do_sprzedanych_aut')
+        // axios.get('https://my.api.mockaroo.com/model_sold_chart.json?key=e574cd50&fbclid=IwAR2L6l4BZe580qJp9Rda6V_iphFbuRWfYRNVFeVYYvKaJy3c3YosXRReqNc')
         axios.get('/dane/sold.json', {
             method: 'HEAD',
             mode: 'no-cors',
@@ -268,7 +266,7 @@ var soldView = Vue.component('sold-view', {
 var combustionView = Vue.component('combustion-view', {
     data: function () {
         let data = [];
-        // axios.get('https://api_do_sprzedanych_aut')
+        // axios.get('https://my.api.mockaroo.com/combustion_chart.json?key=e574cd50&fbclid=IwAR0l7_4UV2M_2Wmbk-ySsKwVfGGntL8ac2yg5sdVqJMD32yfHPebCtoOfl0')
         axios.get('/dane/combustion.json', {
             method: 'HEAD',
             mode: 'no-cors',
