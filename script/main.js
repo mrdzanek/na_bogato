@@ -91,7 +91,7 @@ var carSelect = Vue.component('car-select', {
             </fieldset>
 
             <input type="button" class="btn btn-success" value="Search" id="searchButton">
-            <input type="button" class="btn btn-danger" value="Clear" id="clearButton">
+            <input type="button" class="btn btn-danger ml-3" value="Clear" id="clearButton">
 
     </form>
 </div>
