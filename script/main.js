@@ -137,7 +137,6 @@ var carView = Vue.component('car-view', {
            <img v-bind:src="car.car_image">          
         </div>
     </div>
-    <br>
     `
 });
 
